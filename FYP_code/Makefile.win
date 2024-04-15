@@ -1,0 +1,43 @@
+# Project: FYP
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = src/Instance.o src/main.o src/Sys.o src/homo_SCC.o src/Condensation.o src/homo_nSCC.o
+LINKOBJ  = src/Instance.o src/main.o src/Sys.o src/homo_SCC.o src/Condensation.o src/homo_nSCC.o
+LIBS     = -L"E:/Dev-Cpp/MinGW64/lib" -L"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"E:/Dev-Cpp/MinGW64/include" -I"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"E:/Dev-Cpp/MinGW64/include" -I"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = FYP.exe
+CXXFLAGS = $(CXXINCS) -std=c++11
+CFLAGS   = $(INCS) -std=c++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+src/Instance.o: src/Instance.cpp
+	$(CPP) -c src/Instance.cpp -o src/Instance.o $(CXXFLAGS)
+
+src/main.o: src/main.cpp
+	$(CPP) -c src/main.cpp -o src/main.o $(CXXFLAGS)
+
+src/Sys.o: src/Sys.cpp
+	$(CPP) -c src/Sys.cpp -o src/Sys.o $(CXXFLAGS)
+
+src/homo_SCC.o: src/homo_SCC.cpp
+	$(CPP) -c src/homo_SCC.cpp -o src/homo_SCC.o $(CXXFLAGS)
+
+src/Condensation.o: src/Condensation.cpp
+	$(CPP) -c src/Condensation.cpp -o src/Condensation.o $(CXXFLAGS)
+
+src/homo_nSCC.o: src/homo_nSCC.cpp
+	$(CPP) -c src/homo_nSCC.cpp -o src/homo_nSCC.o $(CXXFLAGS)
